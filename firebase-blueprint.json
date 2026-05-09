@@ -1,0 +1,26 @@
+{
+  "entities": {
+    "AdoptionRequest": {
+      "title": "Adoption Request",
+      "description": "Information collected from potential adopters.",
+      "type": "object",
+      "properties": {
+        "catId": { "type": "string" },
+        "catName": { "type": "string" },
+        "applicantName": { "type": "string" },
+        "applicantEmail": { "type": "string", "format": "email" },
+        "applicantPhone": { "type": "string" },
+        "message": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["catId", "catName", "applicantName", "applicantEmail", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "adoptionRequests/{requestId}": {
+      "schema": "AdoptionRequest",
+      "description": "Collection of adoption applications."
+    }
+  }
+}

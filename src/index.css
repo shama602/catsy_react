@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Plus+Jakarta+Sans:wght@300..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-surface: #fff8f4;
+  --color-surface-dim: #e2d8d2;
+  --color-surface-bright: #fff8f4;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #fcf2eb;
+  --color-surface-container: #f6ece5;
+  --color-surface-container-high: #f0e6e0;
+  --color-surface-container-highest: #eae1da;
+  --color-on-surface: #1f1b17;
+  --color-on-surface-variant: #57423e;
+  --color-inverse-surface: #34302b;
+  --color-inverse-on-surface: #f9efe8;
+  --color-outline: #8a716d;
+  --color-outline-variant: #dec0ba;
+  --color-surface-tint: #a43c29;
+  --color-primary: #a43c29;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #ff7f67;
+  --color-on-primary-container: #731809;
+  --color-inverse-primary: #ffb4a6;
+  --color-secondary: #845400;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #feb246;
+  --color-on-secondary-container: #6f4600;
+  --color-tertiary: #605e58;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #a7a59d;
+  --color-on-tertiary-container: #3c3b35;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-primary-fixed: #ffdad3;
+  --color-primary-fixed-dim: #ffb4a6;
+  --color-on-primary-fixed: #3f0300;
+  --color-on-primary-fixed-variant: #842414;
+  --color-secondary-fixed: #ffddb6;
+  --color-secondary-fixed-dim: #ffb95a;
+  --color-on-secondary-fixed: #2a1800;
+  --color-on-secondary-fixed-variant: #643f00;
+  --color-tertiary-fixed: #e6e2d9;
+  --color-tertiary-fixed-dim: #c9c6be;
+  --color-on-tertiary-fixed: #1c1c17;
+  --color-on-tertiary-fixed-variant: #484741;
+  --color-background: #fff8f4;
+  --color-on-background: #1f1b17;
+  --color-surface-variant: #eae1da;
+
+  /* Typography */
+  --font-quicksand: "Quicksand", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+
+  /* Constraints for custom naming if needed */
+  --font-headline: var(--font-quicksand);
+  --font-body: var(--font-jakarta);
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-body;
+  }
+}

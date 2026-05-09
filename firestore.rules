@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isValidAdoptionRequest(data) {
+      return data.keys().hasAll(['catId', 'catName', 'applicantName', 'applicantEmail', 'applicantPhone', 'message', 'status', 'createdAt'])
+        && data.keys().size() == 8
+        && data.catId is string && data.catId.size() <= 100
+        && data.catName is string && data.catName.size() <= 100
+        && data.applicantName is string && data.applicantName.size() <= 100
+        && data.applicantEmail is string && data.applicantEmail.size() <= 100
+        && data.applicantPhone is string && data.applicantPhone.size() <= 20
+        && data.message is string && data.message.size() <= 1000
+        && data.status in ['pending', 'approved', 'rejected']
+        && data.createdAt == request.time;
+    }
+
+    match /adoptionRequests/{requestId} {
+      allow create: if isValidId(requestId) && isValidAdoptionRequest(request.resource.data);
+      // For now, only allow creating. In a real app, admins would read/update.
+      allow read: if false; 
+    }
+  }
+}
